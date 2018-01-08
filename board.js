@@ -11,12 +11,16 @@ class Board {
     
     const piece = this.players[this.turn];
     this.board[row][col] = piece;
-    this.turn = !this.turn;
     this.render();
     
-    if (checkForWin()) { return 'win'; }
+    if (this.checkForWin()) { return 'win'; }
 
+    this.turn = !this.turn;
     return 'next';
+  }
+
+  showPlayer() {
+    return this.players[this.turn];
   }
 
   checkValidPlay(row, col) {
@@ -24,16 +28,17 @@ class Board {
   }
 
   checkRow(row) {
-    const piece = row[0]
-    for (let i = 1; i < 3; i++) {
+    const piece = this.players[this.turn];
+    for (let i = 0; i < 3; i++) {
       if (row[i] !== piece) { return false; }
     }
     return true;
   }
 
   checkDiagonals(corner) {
-    const piece = this.board[0][corner];
+    const piece = this.players[this.turn];
     const direction = corner === 0 ? 1 : -1;
+    if (this.board[0][corner] !== piece) { return false; }
     if (this.board[1][1] !== piece) { return false; }
     if (this.board[2][1 + direction] !== piece) { return false; }
     return true; 
@@ -41,9 +46,9 @@ class Board {
 
   checkForWin() {
     for (let i = 0; i < 3; i++) {
-      if (checkRow(i)) { return true; }
+      if (this.checkRow(i)) { return true; }
     }
-    if (checkDiagonals(0) || checkDiagonals(2)) { return true; }
+    if (this.checkDiagonals(0) || this.checkDiagonals(2)) { return true; }
     return false;
   }
 
