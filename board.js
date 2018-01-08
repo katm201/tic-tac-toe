@@ -12,7 +12,7 @@ class Board {
     const piece = this.players[this.turn];
     this.board[row][col] = piece;
     this.render();
-    
+
     if (this.checkForWin()) { return 'win'; }
 
     this.turn = !this.turn;
@@ -30,7 +30,15 @@ class Board {
   checkRow(row) {
     const piece = this.players[this.turn];
     for (let i = 0; i < 3; i++) {
-      if (row[i] !== piece) { return false; }
+      if (this.board[row][i] !== piece) { return false; }
+    }
+    return true;
+  }
+
+  checkColumn(col) {
+    const piece = this.players[this.turn];
+    for (let i = 0; i < 3; i++) {
+      if (this.board[i][col] !== piece) { return false; }
     }
     return true;
   }
@@ -47,13 +55,14 @@ class Board {
   checkForWin() {
     for (let i = 0; i < 3; i++) {
       if (this.checkRow(i)) { return true; }
+      if (this.checkColumn(i)) { return true; }
     }
     if (this.checkDiagonals(0) || this.checkDiagonals(2)) { return true; }
     return false;
   }
 
   render() {
-    let view = ''
+    let view = '\n';
     for (let i = 0; i < 3; i++) {
       if (i > 0) { view += '_   _   _\n\n'; }
       for (let j = 0; j < 3; j++) {
