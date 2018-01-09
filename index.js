@@ -19,6 +19,10 @@ const round = (lastResult) => {
     console.log(`Congrats, player ${player}! You win.`);
     return;
   }
+  if (lastResult === 'loss') {
+    console.log('Board is full--no winners.');
+    return;
+  }
   if (lastResult === 'next') {
     console.log(`Player ${player}, your turn. Please enter 0-2 for row and 0-2 for column: `);
     prompt.get(['row', 'column'], (err, result) => {

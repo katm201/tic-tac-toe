@@ -14,6 +14,7 @@ class Board {
     this.render();
 
     if (this.checkForWin()) { return 'win'; }
+    if (this.checkForLoss()) { return 'loss'; }
 
     this.turn = !this.turn;
     return 'next';
@@ -59,6 +60,15 @@ class Board {
     }
     if (this.checkDiagonals(0) || this.checkDiagonals(2)) { return true; }
     return false;
+  }
+
+  checkForLoss() {
+    for (let i = 0; i < 3; i++) {
+      for (let j = 0; j < 3; j++) {
+        if (this.board[i][j] === ' ') { return false; }
+      }
+    }
+    return true;
   }
 
   render() {
