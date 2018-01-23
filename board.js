@@ -25,6 +25,9 @@ class Board {
   }
 
   checkValidPlay(row, col) {
+    if (row > 2 || row < 0 || col > 2 || col < 0) {
+      return false;
+    }
     return this.board[row][col] === ' ';
   }
 
