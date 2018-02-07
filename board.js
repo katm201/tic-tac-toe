@@ -11,7 +11,6 @@ class Board {
     
     const piece = this.players[this.turn];
     this.board[row][col] = piece;
-    this.render();
 
     if (this.checkForWin()) { return 'win'; }
     if (this.checkForLoss()) { return 'loss'; }

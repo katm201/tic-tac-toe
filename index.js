@@ -15,7 +15,6 @@ const round = (lastResult) => {
     console.log(`Player ${player}, invalid entry. Please enter 0-2 for row and 0-2 for column: `);
     prompt.get(['row', 'column'], (err, result) => {
       const play = game.play(result.row, result.column);
-      // clear();
       return round(play);
     });
   }
@@ -31,7 +30,6 @@ const round = (lastResult) => {
     console.log(`Player ${player}, your turn. Please enter 0-2 for row and 0-2 for column: `);
     prompt.get(['row', 'column'], (err, result) => {
       const play = game.play(result.row, result.column);
-      // clear();
       return round(play);
     });
   }
