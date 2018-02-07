@@ -13,5 +13,4 @@ npm run game
 
 Built using JavaScript ES6 and Node.
 
-Example of a rendered board and the win condition:
 ![screenshot](./images/tic-tac-toe-win.png)
