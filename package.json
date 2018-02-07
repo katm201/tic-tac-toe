@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/katm201/tic-tac-toe#readme",
   "dependencies": {
+    "clear": "0.0.1",
     "prompt": "^1.0.0"
   }
 }

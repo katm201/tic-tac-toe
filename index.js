@@ -1,4 +1,5 @@
 const prompt = require('prompt');
+const clear = require('clear');
 
 const Board = require('./board');
 
@@ -7,11 +8,14 @@ prompt.start()
 const game = new Board();
 
 const round = (lastResult) => {
+  clear();
+  game.render();
   const player = game.showPlayer();
   if (lastResult === 'invalid') {
     console.log(`Player ${player}, invalid entry. Please enter 0-2 for row and 0-2 for column: `);
     prompt.get(['row', 'column'], (err, result) => {
       const play = game.play(result.row, result.column);
+      // clear();
       return round(play);
     });
   }
@@ -27,6 +31,7 @@ const round = (lastResult) => {
     console.log(`Player ${player}, your turn. Please enter 0-2 for row and 0-2 for column: `);
     prompt.get(['row', 'column'], (err, result) => {
       const play = game.play(result.row, result.column);
+      // clear();
       return round(play);
     });
   }

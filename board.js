@@ -84,7 +84,8 @@ class Board {
       }
       view += '\n';
     }
-  console.log(view);
+    
+    console.log(view);
   }
 }
 
